@@ -41,7 +41,7 @@ export default class Server {
         console.log("Listening to sockets...");
 
         this.socketIO.on('connection', client => {
-            console.log("New connected client...");
+            console.log("New connected client...", client.id);
             socket.listenMessages( client, this.socketIO );
             socket.disconnect( client );
         })
