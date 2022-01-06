@@ -2,6 +2,7 @@ import express from 'express';
 import { SERVERT_PORT } from '../global/environment';
 import SocketIO from 'socket.io';
 import http from 'http';
+import * as socket from '../sockets/socket';
 export default class Server {
 
     private static _instance: Server;
@@ -9,7 +10,7 @@ export default class Server {
     public app: express.Application;
     public port: number;
 
-    public socket: SocketIO.Server;
+    public socketIO: SocketIO.Server;
     private httpServer: http.Server;
 
     private constructor() {
@@ -17,7 +18,7 @@ export default class Server {
         this.app = express();
         this.port = SERVERT_PORT;
         this.httpServer = new http.Server( this.app );
-        this.socket = SocketIO( this.httpServer, {
+        this.socketIO = SocketIO( this.httpServer, {
             cors: {
               origin: "*",
               methods: ["GET", "POST"]
@@ -39,8 +40,10 @@ export default class Server {
 
         console.log("Listening to sockets...");
 
-        this.socket.on('connection', client => {
+        this.socketIO.on('connection', client => {
             console.log("New connected client...");
+            socket.listenMessages( client, this.socketIO );
+            socket.disconnect( client );
         })
 
 
