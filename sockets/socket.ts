@@ -10,5 +10,5 @@ export const disconnect = (client: Socket) => {
 export const listenMessages = ( client: Socket, socket: SocketIO.Server ) => {
     client.on('message', (payload) => {
         socket.emit('newMessage', payload);
-    })
+    });
 }
