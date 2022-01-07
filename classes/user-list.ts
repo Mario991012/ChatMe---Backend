@@ -1,6 +1,6 @@
 import { User } from "./user";
 
-export class userList {
+export class UserList {
 
     users: User[] = [];
 
