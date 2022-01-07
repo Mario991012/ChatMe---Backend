@@ -32,10 +32,8 @@ export default class Server {
         return this._instance || ( this._instance = new this() );
     }
 
-    start(port: any) {
-        this.httpServer.listen(SERVERT_PORT,  () => {
-            console.log(`Server running on port ${port}...`);
-        })
+    start(cb: any) {
+        this.httpServer.listen(SERVERT_PORT,  cb);
     }
 
     private listenSockets() {
