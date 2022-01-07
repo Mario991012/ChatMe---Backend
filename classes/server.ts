@@ -42,6 +42,7 @@ export default class Server {
 
         this.socketIO.on('connection', (client: any) => {
             console.log("New connected client...", client.id);
+            socket.connectUser( client );
             socket.configUser( client, this.socketIO );
             socket.listenMessages( client, this.socketIO );
             socket.disconnect( client );
