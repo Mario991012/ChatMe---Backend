@@ -1,13 +1,13 @@
 import { Router, Request, Response } from 'express';
+import Server from '../classes/server';
 
 const router = Router();
 
-router.get('/messages', (req: Request, res: Response ) => {
+router.post('/messages', (req: Request, res: Response ) => {
 
-    res.json({
-        ok: true,
-        message: 'All good'
-    })
+    const server = Server.instance;
+
+    server.socketIO.emit('newMessage', res)
 
 });
 
