@@ -32,10 +32,8 @@ export default class Server {
         return this._instance || ( this._instance = new this() );
     }
 
-    start(port: any) {
-        this.httpServer.listen(SERVERT_PORT,  () => {
-            console.log(`Server running on port ${port}...`);
-        })
+    start(cb: any) {
+        this.httpServer.listen(SERVERT_PORT,  cb);
     }
 
     private listenSockets() {
@@ -44,6 +42,7 @@ export default class Server {
 
         this.socketIO.on('connection', (client: any) => {
             console.log("New connected client...", client.id);
+            socket.connectUser( client );
             socket.configUser( client, this.socketIO );
             socket.listenMessages( client, this.socketIO );
             socket.disconnect( client );
