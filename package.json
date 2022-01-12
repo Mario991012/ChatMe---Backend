@@ -9,6 +9,10 @@
     "postinstall": "npm run tsc",
     "tsc": "tsc"
   },
+  "engines": {
+    "node": "14.17.1",
+    "npm": "8.3.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mario991012/RealtimeChat.git"
