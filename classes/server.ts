@@ -18,12 +18,7 @@ export default class Server {
         this.app = express();
         this.port = SERVERT_PORT;
         this.httpServer = new http.Server( this.app );
-        this.socketIO = SocketIO( this.httpServer, {
-            cors: {
-              origin: "*",
-              methods: ["GET", "POST"]
-            }
-        });
+        this.socketIO = SocketIO( this.httpServer) ;
         this.listenSockets();
 
     }

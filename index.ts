@@ -9,7 +9,7 @@ var CORS_CONFIG = require('./config/cors.conf');
 server.app.use( bp.urlencoded({ extended: true }));
 server.app.use( bp.json() );
 
-server.app.use( cors() )
+server.app.use( cors({ origin: true, credentials: true }) )
 
 server.app.use('/', router)
 
