@@ -14,7 +14,7 @@ export const connectUser = (client: Socket) => {
 
 export const disconnect = (client: Socket) => {
     client.on('disconnect', () => {
-        console.log(`Client ${client.id} (${connectedUsers.getUser(client.id)}) disconnected...`);
+        console.log(`Client ${client.id} (${connectedUsers.getUser(client.id)?.name}) disconnected...`);
         connectedUsers.removeUser( client.id );
     })
 }
