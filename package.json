@@ -4,9 +4,10 @@
   "description": "Server for Angular Socket.io example\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[1;5D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[ \u001b[C\u001b[C\u001b[C\u001b[C\u001b: Server used for Socket.io functions.",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node .",
+    "tsc": "tsc",
+    "start": "node dist/index.js",
     "start:dev": "ts-node index.ts",
+    "postinstall": "npm run tsc",
     "heroku-postbuild": "echo Skip build on Heroku"
   },
   "engines": {
